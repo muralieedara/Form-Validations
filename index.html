@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<script >
+function validateForm() {
+	var Z = document.forms["myForm"]["ID"].value;
+	for(var i= 0; i< document.forms["myForm"]["hobbies"].length; i++)
+	{
+		var Y = document.forms["myForm"]["hobbies"][i].checked;
+		if( Y === true )
+	{
+	break;
+	}
+	}
+	if (Y === false)
+	{
+	alert("Enter Hobies");
+	return false;
+	}
+	var X= document.forms["myForm"]["mySelect"].value;
+	if(X === "")
+	{
+	alert("Select County");
+	return false;
+	}
+	var inValid = new RegExp(/\s+?/g);
+	 if(inValid.test(Z))
+	 {
+	alert("Invalid User ID Format");
+	return false;
+	}
+	return true;
+	}
+	
+	</script>
+<style>
+.container{
+margin: 0 auto;
+padding: 0;
+}
+</style>
+</head>
+<body>
+
+<form name="myForm" onsubmit="return validateForm()" class="container" action="../Form Validations/Post.php" method="post">
+<table> 
+    <tr>
+        <td>
+          First Name: 
+		</td>
+		<td>
+		  <input type="text" name="fname" placeholder="enter First Name" required />
+		</td>
+    </tr>
+    <tr>
+        <td>
+	     Last Name:
+        </td>		 
+	    <td>
+          <input type="text" name= "lname" placeholder="Enter Last Name" required />
+		</td>
+    </tr>
+    <tr>	
+        <td>
+		  user ID:
+        </td>
+        <td>
+           <input type="text" name= "ID" placeholder="Enter User ID" required />
+		</td>
+	</tr>
+	<tr>
+        <td>
+		  Password: 
+		</td>
+        <td>
+		  <input type="password" name="password" placeholder="Enter Password"  required />
+		</td>
+	</tr>
+	<tr>
+	    <td>
+		  Country:
+        </td>
+        <td>
+		  <select name="mySelect">
+            <option value="">Select</option>
+            <option value="India">India</option>
+            <option value="USA">USA</option>
+            <option value="UK">UK</option>
+          </select>
+		</td>
+	</tr>
+	<tr>
+	    <td>
+           Hobbies:
+		</td>
+		<td> 
+		   <input type="checkbox" name= "hobbies" value="coding"  />Coding
+           <input type="checkbox" name= "hobbies" value="music" />Music
+           <input type="checkbox" name= "hobbies" value="dancing" />Dancing
+		</td>
+	</tr>
+	<tr>
+	    <td>
+           <input type="submit" value="Submit">
+		</td>
+    </tr>
+</table>
+</form>
+
+</body>
+</html>
